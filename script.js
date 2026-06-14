@@ -3,15 +3,14 @@ const input = document.getElementById('cmd-input');
 
 // ── EDIT THIS SECTION WITH YOUR INFO ──
 const INFO = {
-  name: "Your Name",
-  location: "Dhaka, Bangladesh",
+  name: "Cartierizz",
+  location: "Dacca, Bangladesh",
   role: "Web Developer & Creative Coder",
   bio: "I build things for the web. Obsessed with design, code, and making cool stuff.",
-  email: "you@email.com",
+  email: "rafigger@terrorist.lol",
   github: "github.com/yourhandle",
   projects: [
-    { name: "Browntown",     desc: "Luxury phone case e-commerce site" },
-    { name: "Mohera Paper",  desc: "Corporate site for paper manufacturer" },
+    { name: "Eclat",         desc: "Premium streetwear defining your unique, brilliant edge" },
     { name: "AURUM",         desc: "Dark luxury jewelry store" },
   ],
   skills: ["HTML", "CSS", "JavaScript", "Creative Coding", "AR / Hand Tracking"],
@@ -89,8 +88,7 @@ input.addEventListener('keydown', (e) => {
   input.value = '';
 
   // echo what user typed
-  print([{ text: `visitor@your-name:~$ ${cmd}`, cls: "dim" }]);
-
+print([{ text: `visitor@cartierizz:~$ ${cmd}`, cls: "dim" }]);
   if (!cmd) return;
 
   if (COMMANDS[cmd]) {
