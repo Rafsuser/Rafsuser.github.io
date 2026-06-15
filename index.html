@@ -19,7 +19,6 @@
       overflow: hidden;
     }
 
-    /* TOP BAR */
     #topbar {
       background: #1a1a1a;
       border-bottom: 1px solid #2a2a2a;
@@ -31,7 +30,6 @@
     }
     #topbar span { color: #4af626; }
 
-    /* MAIN LAYOUT */
     #main {
       display: flex;
       flex: 1;
@@ -40,7 +38,6 @@
       gap: 32px;
     }
 
-    /* LEFT — ASCII PORTRAIT */
     #portrait {
       flex-shrink: 0;
       white-space: pre;
@@ -51,7 +48,6 @@
       user-select: none;
     }
 
-    /* RIGHT — BIO PANEL */
     #bio-panel {
       flex: 1;
       display: flex;
@@ -74,16 +70,41 @@
       max-width: 420px;
     }
 
-    #bio-text .highlight {
+    #bio-text .highlight { color: #ffffff; font-weight: bold; }
+    #bio-text .dim { color: #666; }
+
+    /* SOCIAL BUTTONS */
+    #social-links {
+      display: flex;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border: 1px solid #4af62655;
+      color: #4af626;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s;
+      background: transparent;
+    }
+
+    .social-btn:hover {
+      background: #4af62615;
+      border-color: #4af626;
       color: #ffffff;
-      font-weight: bold;
     }
 
-    #bio-text .dim {
-      color: #666;
-    }
+    .social-btn.telegram { border-color: #29aae155; color: #29aae1; }
+    .social-btn.telegram:hover { background: #29aae115; border-color: #29aae1; color: #ffffff; }
 
-    /* MENU */
     #menu {
       margin-top: auto;
       display: flex;
@@ -99,18 +120,15 @@
       font-size: 13px;
       letter-spacing: 1px;
       transition: color 0.15s;
-      position: relative;
     }
 
     .menu-item:hover { color: #ffffff; }
-
     .menu-item.active {
       color: #ffffff;
       text-decoration: underline;
       text-underline-offset: 4px;
     }
 
-    /* CONTENT PANEL (shows on menu click) */
     #content-panel {
       display: none;
       flex: 1;
@@ -141,7 +159,7 @@
 
     .entry-title { color: #ffffff; font-weight: bold; }
     .entry-desc  { color: #777; font-size: 12px; margin-top: 3px; }
-    .entry-tag   {
+    .entry-tag {
       display: inline-block;
       color: #4af626;
       font-size: 10px;
@@ -151,7 +169,30 @@
       margin-right: 4px;
     }
 
-    /* BOTTOM STATUS BAR */
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      padding: 6px 16px;
+      border: 1px solid #4af62555;
+      color: #4af626;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 12px;
+      text-decoration: none;
+      transition: all 0.15s;
+      width: 100%;
+    }
+
+    .contact-link:hover {
+      background: #4af62610;
+      border-color: #4af626;
+      color: #fff;
+    }
+
+    .contact-link.tg { border-color: #29aae155; color: #29aae1; }
+    .contact-link.tg:hover { background: #29aae110; border-color: #29aae1; color: #fff; }
+
     #statusbar {
       background: #111;
       border-top: 1px solid #222;
@@ -163,7 +204,6 @@
     }
     #statusbar .hint { color: #4af626; }
 
-    /* SCROLLBAR */
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: #0a0a0a; }
     ::-webkit-scrollbar-thumb { background: #2a2a2a; }
@@ -179,7 +219,6 @@
 
 <div id="main">
 
-  <!-- ASCII PORTRAIT -->
   <div id="portrait">
                               .+#%%%%#+                                                             
                             .-%@%@@@@@@#                                                            
@@ -223,7 +262,6 @@
                          ...:=%%*==+-..                                                             
                             ..... ...                                                           </div>
 
-  <!-- BIO PANEL -->
   <div id="bio-panel">
 
     <div id="logo">[ rafsuser ]</div>
@@ -242,6 +280,15 @@
       Explore the sections below to learn more ↓
     </div>
 
+    <div id="social-links">
+      <a class="social-btn" href="https://github.com/Rafsuser" target="_blank">
+        ⌥ GitHub
+      </a>
+      <a class="social-btn telegram" href="https://t.me/Cartierizz" target="_blank">
+        ✈ Telegram
+      </a>
+    </div>
+
     <div id="menu">
       <div class="menu-item" onclick="showSection('projects')">+ Projects</div>
       <div class="menu-item" onclick="showSection('skills')">Skills</div>
@@ -250,10 +297,7 @@
 
   </div>
 
-  <!-- CONTENT PANEL -->
-  <div id="content-panel">
-    <!-- filled by JS -->
-  </div>
+  <div id="content-panel"></div>
 
 </div>
 
@@ -282,18 +326,19 @@
     skills: {
       title: 'Skills',
       entries: [
-        { title: 'Frontend',     desc: 'HTML, CSS, JavaScript — hand-crafted, no frameworks.',       tags: [] },
-        { title: 'Design',       desc: 'Luxury UI, dark aesthetics, typography, layout systems.',     tags: [] },
-        { title: 'Creative Code',desc: 'AR, hand tracking, generative visuals, canvas experiments.',  tags: [] },
-        { title: 'Tools',        desc: 'VS Code, GitHub, Python, OpenCV, MediaPipe, Pygame.',         tags: [] },
+        { title: 'Frontend',      desc: 'HTML, CSS, JavaScript — hand-crafted, no frameworks.',      tags: [] },
+        { title: 'Design',        desc: 'Luxury UI, dark aesthetics, typography, layout systems.',    tags: [] },
+        { title: 'Creative Code', desc: 'AR, hand tracking, generative visuals, canvas experiments.', tags: [] },
+        { title: 'Tools',         desc: 'VS Code, GitHub, Python, OpenCV, MediaPipe, Pygame.',        tags: [] },
       ]
     },
     contact: {
       title: 'Contact',
       entries: [
-        { title: 'GitHub',   desc: 'github.com/Rafsuser',     tags: [] },
-        { title: 'Location', desc: 'Dhaka, Bangladesh',       tags: [] },
-        { title: 'Status',   desc: 'Open to collaborations',  tags: ['available'] },
+        { title: 'GitHub',   desc: 'github.com/Rafsuser',    tags: [],           link: 'https://github.com/Rafsuser',  cls: '' },
+        { title: 'Telegram', desc: '@Cartierizz',            tags: ['dm open'],  link: 'https://t.me/Cartierizz',      cls: 'tg' },
+        { title: 'Location', desc: 'Dhaka, Bangladesh',      tags: [],           link: null,                            cls: '' },
+        { title: 'Status',   desc: 'Open to collaborations', tags: ['available'],link: null,                            cls: '' },
       ]
     }
   };
@@ -302,24 +347,27 @@
     const panel = document.getElementById('content-panel');
     const data = sections[key];
 
-    // Update active menu item
     document.querySelectorAll('.menu-item').forEach(el => el.classList.remove('active'));
     event.target.classList.add('active');
 
     let html = `<h2>${data.title}</h2>`;
     data.entries.forEach(e => {
       const tags = e.tags.map(t => `<span class="entry-tag">${t}</span>`).join('');
+      const linkOpen  = e.link ? `<a class="contact-link ${e.cls}" href="${e.link}" target="_blank">` : '';
+      const linkClose = e.link ? `</a>` : '';
+      const arrow     = e.link ? ' →' : '';
+
       html += `
         <div class="entry">
           <div class="entry-title">${e.title}</div>
           <div class="entry-desc">${e.desc}</div>
           ${tags ? `<div style="margin-top:6px">${tags}</div>` : ''}
+          ${e.link ? `${linkOpen}${e.title}${arrow}${linkClose}` : ''}
         </div>`;
     });
 
     panel.innerHTML = html;
     panel.classList.add('visible');
-
     document.getElementById('statusbar').querySelector('span').textContent =
       `[ ${data.title.toLowerCase()} ]`;
   }
